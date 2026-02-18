@@ -44,11 +44,16 @@ with DryRun enabled by default and all destructive actions explicitly controlled
 
 - PowerShell 7+ recommended
 - Az PowerShell modules (the script will attempt to install required modules if missing)
+- Permissions to log into Azure via PowerShell
 - Permissions to create/update resources in the target subscription(s)
+- Permissions to assign Backup Contributor to the Recovery Vault
+- Permissions to assign Automation Contributor to the Automation Acocunt
+- Permissions to Read and Create Resourcesa Groups
+- Permissions to create Managed Identities
 
 ## How to use
 
-1. Open `Deploy-BackupCleanup_PUBLIC_NO_INTERNAL_URLS.ps1`
+1. Open `Deploy-BackupCleanup_public_final.ps1`
 2. In the **0) VARIABLES (EDIT HERE)** section, replace each placeholder value like `<...>` with values from your environment.
 3. Run:
 
