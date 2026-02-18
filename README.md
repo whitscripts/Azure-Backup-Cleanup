@@ -7,19 +7,37 @@ This code must be tested and its accuracy verified in a non‑production environ
 This software is provided “as is”, without warranty of any kind, express or implied, including but not limited to warranties of merchantability, fitness for a particular purpose, or non‑infringement. Use of this software is at your own risk, and no guarantee is made regarding functionality, accuracy, or results.
 
 
+End-to-end deployment of an automated Azure backup cleanup solution.
 
+.DESCRIPTION
+This script deploys and configures an Azure-based solution to evaluate and clean up Azure VM backup recovery points stored in a Recovery Services Vault when backups are stopped, disabled, or suspended.
 This repo contains a **sanitized** PowerShell deployment script that provisions a backup-cleanup solution in Azure:
 
-- Azure Automation Account (creates if missing)
-- Imports and publishes a Runbook that evaluates Recovery Services Vault VM backup recovery points and (optionally) deletes out-of-retention points
-- Logic App (Consumption) that triggers the runbook on a schedule
-- Optional Office 365 connection for email notifications
+- Ensures required Azure resource providers and PowerShell modules are available
+- Creates or reuses an Azure Automation Account with a system-assigned managed identity
+- Assigns required RBAC permissions for backup management
+- Configures Automation variables for cross-subscription Log Analytics logging
+- Generates, imports, and publishes an Automation Runbook that:
+  - Enumerates Azure VM backup items in a Recovery Services Vault
+  - Evaluates recovery points against configurable retention thresholds
+  - Logs detailed results to Log Analytics
+  - Supports a DryRun mode to simulate deletions without making changes
+- Deploys a Logic App (Consumption) that triggers the runbook on a scheduled basis
+- Optionally configures email notifications for runbook execution events
+
+The solution is designed for safe operation in regulated or production environments,
+with DryRun enabled by default and all destructive actions explicitly controlled.
+
+.NOTES
+- This script supports Recovery Services Vaults only.
+- Data Protection Backup Vaults are detected and intentionally not modified.
+- All environment-specific values must be provided in the VARIABLES section.
+- Review and test in a non-production environment before enabling deletions.
+
+
+
 
 > **Important**: This script targets **Recovery Services Vaults** (`Microsoft.RecoveryServices/vaults`). If you point it at a **Data Protection Backup Vault** (`Microsoft.DataProtection/backupVaults`), it will stop with guidance.
-
-- NOTE:  Dryrun is set to true. This will not delete backups unless the flag is set to false. Please test and verify working accuracy in a Non-Production Environment before publishing to a Production Environments.
-- This is published and free to use without warranty or guarantee of results. 
-
 
 ## Prerequisites
 
@@ -64,4 +82,5 @@ In the script, placeholders appear like `<Primary Subscription ID>` or `<Vault R
 
 ## Disclaimer
 
-This script is provided as-is. Review it and test in a non-production environment before using it in production.
+This code must be tested and its accuracy verified in a non‑production environment prior to any use in a production environment.
+This software is provided “as is”, without warranty of any kind, express or implied, including but not limited to warranties of merchantability, fitness for a particular purpose, or non‑infringement. Use of this software is at your own risk, and no guarantee is made regarding functionality, accuracy, or results.
