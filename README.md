@@ -1,6 +1,5 @@
 [README.md](https://github.com/user-attachments/files/25401444/README.md)
-# Deploy-BackupCleanup (Public Template)
-
+# Deploy Azure Backup Cleanup
 
 Notice: The DryRun parameter is currently set to true. When enabled, no backups will be deleted. Backup deletion will occur only if the DryRun parameter is explicitly set to false.
 This code must be tested and its accuracy verified in a non‑production environment prior to any use in a production environment.
