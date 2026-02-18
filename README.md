@@ -18,7 +18,7 @@ This repo contains a **sanitized** PowerShell deployment script that provisions 
 - Assigns required RBAC permissions for backup management
 - Configures Automation variables for cross-subscription Log Analytics logging
 - Generates, imports, and publishes an Automation Runbook that:
-  - Enumerates Azure VM backup items in a Recovery Services Vault
+  - Enumerates Azure VM backup items in a Recovery Services Vault(s)
   - Evaluates recovery points against configurable retention thresholds
   - Logs detailed results to Log Analytics
   - Supports a DryRun mode to simulate deletions without making changes
