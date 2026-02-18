@@ -8,7 +8,7 @@ This software is provided “as is”, without warranty of any kind, express or 
 
 End-to-end deployment of an automated Azure backup cleanup solution.
 
-DESCRIPTION
+## DESCRIPTION
 
 This script deploys and configures an Azure-based solution to evaluate and clean up Azure VM backup recovery points stored in a Recovery Services Vault when backups are stopped, disabled, or suspended.
 This repo contains a **sanitized** PowerShell deployment script that provisions a backup-cleanup solution in Azure:
@@ -28,7 +28,7 @@ This repo contains a **sanitized** PowerShell deployment script that provisions 
 The solution is designed for safe operation in regulated or production environments,
 with DryRun enabled by default and all destructive actions explicitly controlled.
 
-NOTES
+## NOTES
 
 - This script supports Recovery Services Vaults only.
 - Data Protection Backup Vaults are detected and intentionally not modified.
