@@ -58,7 +58,7 @@ with DryRun enabled by default and all destructive actions explicitly controlled
 3. Run:
 
 ```powershell
-./Deploy-BackupCleanup_PUBLIC_NO_INTERNAL_URLS.ps1
+./Deploy-BackupCleanup_public_final.ps1
 ```
 
 ## Variable placeholders
